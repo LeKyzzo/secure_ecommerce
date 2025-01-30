@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once 'includes/db.php';
-include __DIR__ . '/../header.php';
+include __DIR__ . '/../includes/header.php';
+
 
 
 // Récupération des informations du vendeur depuis la base de données
@@ -26,7 +27,7 @@ $seller = $stmt->fetch();
     <?php else: ?>
         <p>Aucune information disponible.</p>
     <?php endif; ?>
-    <?php include __DIR__ . '/../footer.php';
+    <?php include __DIR__ . '/../includes/footer.php';
 ; ?>
 </body>
 </html>

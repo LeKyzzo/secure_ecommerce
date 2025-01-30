@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once 'includes/db.php';
-include __DIR__ . '/../header.php';
+include __DIR__ . '/../includes/header.php';
+
 
 // Vérifier si l'utilisateur est un administrateur (à sécuriser selon votre logique utilisateur)
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
@@ -57,7 +58,7 @@ $products = $stmt->fetchAll();
             </div>
         <?php endforeach; ?>
     </div>
-    <?php include __DIR__ . '/../footer.php';
+    <?php include __DIR__ . '/../includes/footer.php';
 ; ?>
 </body>
 </html>
