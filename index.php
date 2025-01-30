@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'includes/db.php';
-include 'header.php';
+include 'includes/header.php';
 
 // Récupération des produits depuis la base de données
 $stmt = $pdo->query("SELECT * FROM products LIMIT 6");
@@ -28,6 +28,6 @@ $products = $stmt->fetchAll();
         <?php endforeach; ?>
     </div>
 
-    <?php include 'footer.php'; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

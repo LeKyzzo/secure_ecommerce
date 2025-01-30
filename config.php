@@ -5,7 +5,10 @@ define('DB_NAME', 'ecommerce_owasp__db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once 'includes/db.php';
 
 // Connexion sécurisée 
