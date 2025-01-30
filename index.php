@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'includes/db.php';
-include __DIR__ . 'includes/header.php';
+include __DIR__ . '/includes/header.php';
 
 
 // Récupération des produits depuis la base de données
@@ -29,7 +29,7 @@ $products = $stmt->fetchAll();
         <?php endforeach; ?>
     </div>
 
-    <?php include __DIR__ . '/../includes/footer.php';
+    <?php include __DIR__ . '/includes/footer.php';
 ; ?>
 </body>
 </html>
