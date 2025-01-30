@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once __DIR__ . '/../includes/db.php';
-include 'includes/header.php';
+include __DIR__ . '/../header.php';
 
 
 
@@ -28,7 +28,8 @@ $products = $stmt->fetchAll();
                 <p>Prix : <?= number_format($product['price'], 2) ?> €</p>
             </div>
         <?php endforeach; ?>
-        <?php include 'includes/footer.php'; ?>
+        <?php include __DIR__ . '/../footer.php';
+; ?>
     </div>
 </body>
 </html>
