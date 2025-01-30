@@ -1,15 +1,27 @@
 <?php
-require_once __DIR__ . '/../includes/db.php';
+session_start();
+require_once 'includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
-    $username = sanitizeInput($_POST['username']);
+    $username = htmlspecialchars($_POST['username']);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
     
-    $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->execute([$username, $email, $password]);
+    // Vérifier si l'email existe déjà
+    $checkStmt = $pdo->prepare("SELECT id FROM users WHERE email = ?");
+    $checkStmt->execute([$email]);
     
-    echo "Inscription réussie!";
+    if ($checkStmt->fetch()) {
+        echo "Erreur : Cet email est déjà utilisé.";
+    } else {
+        // Insérer le nouvel utilisateur
+        $stmt = $pdo->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->execute([$username, $email, $password]);
+        
+        // Redirection vers la page de connexion
+        header("Location: /efrei/secure_ecommerce/pages/login.php");
+        exit();
+    }
 }
 ?>
 
@@ -19,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <?php include 'header.php'; ?>
     <h2>Inscription</h2>
     <form action="register.php" method="POST">
         <label for="username">Nom d'utilisateur :</label>
@@ -35,5 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         
         <button type="submit" name="register">S'inscrire</button>
     </form>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
