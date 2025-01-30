@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'includes/db.php';
+include 'includes/header.php';
 
 // Traitement du formulaire de contact
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
@@ -37,5 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
         
         <button type="submit" name="send_message">Envoyer</button>
     </form>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

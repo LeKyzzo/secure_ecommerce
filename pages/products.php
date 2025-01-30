@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . '/../includes/db.php';
+include 'includes/header.php';
+
 
 
 // Récupération des produits depuis la base de données
@@ -26,6 +28,7 @@ $products = $stmt->fetchAll();
                 <p>Prix : <?= number_format($product['price'], 2) ?> €</p>
             </div>
         <?php endforeach; ?>
+        <?php include 'includes/footer.php'; ?>
     </div>
 </body>
 </html>

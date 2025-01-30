@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once 'includes/db.php';
+include 'includes/header.php';
+
 
 // Récupération des informations du vendeur depuis la base de données
 $stmt = $pdo->query("SELECT * FROM seller_info LIMIT 1");
@@ -24,5 +26,6 @@ $seller = $stmt->fetch();
     <?php else: ?>
         <p>Aucune information disponible.</p>
     <?php endif; ?>
+    <?php include 'includes/footer.php'; ?>
 </body>
 </html>

@@ -10,7 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="./pages/products.php">Produits</a></li>
-            <li><a href="./pages/contact_support.php">Contact</a></li>
+            <li><a href="./pages/contact.php">Contact</a></li>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <li><a href="logout.php">Déconnexion</a></li>
             <?php else: ?>
