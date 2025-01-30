@@ -1,14 +1,14 @@
 <?php
-// Configuration de la base de données
+// Configuration db
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'ecommerce_db');
+define('DB_NAME', 'ecommerce_owasp__db');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 
 session_start();
 require_once 'includes/db.php';
 
-// Connexion sécurisée à la base de données
+// Connexion sécurisée 
 function getDBConnection() {
     $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8";
     try {
@@ -23,7 +23,7 @@ function getDBConnection() {
     }
 }
 
-// Protection contre les injections SQL et XSS
+// Protection contre les injections 
 function sanitizeInput($data) {
     return htmlspecialchars(strip_tags(trim($data)));
 }
