@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'includes/db.php';
-include __DIR__ . '/../includes/header.php';
+include __DIR__ . 'includes/header.php';
 
 
 // Récupération des produits depuis la base de données
