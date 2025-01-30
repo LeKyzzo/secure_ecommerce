@@ -1,6 +1,7 @@
 <?php
 session_start();
-require_once 'includes/db.php';
+require_once __DIR__ . '/../includes/db.php';
+
 
 // Récupération des produits depuis la base de données
 $stmt = $pdo->query("SELECT * FROM products");
